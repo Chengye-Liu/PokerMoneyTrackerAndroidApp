@@ -41,10 +41,6 @@ class RecordsViewModel(application: Application) : AndroidViewModel(application)
         return GameStatsCalculator().calculateStats(recordList, type)
     }
 
-    fun getStats(mode: String): PokerStats {
-        return calculateStats(mode, records.value)
-    }
-
     fun deleteRecord(record: PokerRecordEntity) {
         viewModelScope.launch {
             repository.delete(record)
