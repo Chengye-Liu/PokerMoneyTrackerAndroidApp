@@ -186,7 +186,7 @@ fun RecordField(label: String, value: String, onClick: (() -> Unit)? = null) {
     }
 }
 
-/* 🔵 新增：可輸入文字（非數字）的欄位 */
+/* 可輸入文字（非數字）的欄位 */
 @Composable
 fun TextInputField(label: String, value: String, onValueChange: (String) -> Unit) {
     Text(label, fontSize = 14.sp, fontWeight = FontWeight.Medium)
@@ -204,7 +204,7 @@ fun TextInputField(label: String, value: String, onValueChange: (String) -> Unit
     )
 }
 
-/* 🔵 數字輸入欄位（原本的 InputField） */
+/* 數字輸入欄位 */
 @Composable
 fun NumberInputField(label: String, value: String, onValueChange: (String) -> Unit) {
     Text(label, fontSize = 14.sp, fontWeight = FontWeight.Medium)
