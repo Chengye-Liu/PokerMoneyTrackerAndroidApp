@@ -29,12 +29,12 @@ fun HomeScreen() {
     // 取得所有記錄（Room 的 StateFlow）
     val allRecords by viewModel.records.collectAsState()
 
-    // 統計資料（你的 GameStatsCalculator 裡已內建依 mode 過濾）
+    // 統計資料
     val stats by remember(selectedMode, allRecords) {
         derivedStateOf { viewModel.calculateStats(selectedMode, allRecords) }
     }
 
-    // ========= 重點：依「總覽 / 現金 / 錦標」過濾 + 日期排序 → 準備圖表資料（單筆 profit） =========
+    // 依「總覽 / 現金 / 錦標」過濾 + 日期排序  準備圖表資料（單筆 profit)
     val sdf = remember { SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.getDefault()) }
 
     val filtered = remember(selectedMode, allRecords) {
@@ -83,7 +83,7 @@ fun HomeScreen() {
             }
         }
 
-        // 上方固定：總盈虧（使用 totalNetProfit）
+        // 上方固定：總盈虧
         val net = stats.totalNetProfit
         val netText = when {
             net > 0 -> "+$net"
@@ -123,7 +123,7 @@ fun HomeScreen() {
             }
         }
 
-        // 下方固定：圖表（會依 selectedMode 顯示對應資料）
+        // 下方固定：圖表
         BottomChartCard(chartData = chartData)
     }
 }
